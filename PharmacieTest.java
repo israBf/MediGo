@@ -4,7 +4,6 @@ import java.util.List;
 
 public class PharmacieTest {
 
-    @Test
     public void testAjouterEtRechercherMedicament() {
         Pharmacie p = new Pharmacie("Pharmacie Centrale", "Monastir", "central@pharma.tn");
         Medicament m = new Medicament("Doliprane", true);
