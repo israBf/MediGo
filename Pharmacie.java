@@ -9,6 +9,13 @@ public class Pharmacie {
     private String email;
     private List<Medicament> stock;
 
+    public Pharmacie(String nom, String adresse, String email) {
+        this.nom = nom;
+        this.adresse = adresse;
+        this.email = email;
+        this.stock = new ArrayList<>();
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -49,15 +56,11 @@ public class Pharmacie {
         this.stock = stock;
     }
 
-    public Pharmacie(String nom, String adresse, String email) {
-        this.nom = nom;
-        this.adresse = adresse;
-        this.email = email;
-        this.stock = new ArrayList<>();
-    }
-
     public void ajouterMedicament(Medicament m) {
-        this.stock.add(m);
+        assert m != null : "Erreur : le médicament ne peut pas être null.";
+        int tailleAvant = stock.size();
+        stock.add(m);
+        assert stock.size() == tailleAvant + 1 : "Erreur : le médicament n’a pas été ajouté.";
     }
 
     public List<Medicament> rechercherParNom(String nom) {
@@ -66,4 +69,12 @@ public class Pharmacie {
                 .collect(Collectors.toList());
     }
 
+    public void afficherMedicamentsEnStock() {
+        for (int i = 0; i < stock.size(); i++) {
+            Medicament m = stock.get(i);
+            if (m.isEnStock()) {
+                System.out.println(m.getNom());
+            }
+        }
+    }
 }
