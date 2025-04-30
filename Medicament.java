@@ -32,4 +32,19 @@ public class Medicament {
         this.enStock = enStock;
     }
 
+    public static int compterMedicamentsDisponibles(Medicament[] medicaments) {
+        assert medicaments != null;
+        int compteur = 0;
+        for (int i = 0; i < medicaments.length; i++) {
+            assert compteur <= i;
+            if (medicaments[i] != null && medicaments[i].isEnStock()) {
+                compteur++;
+            }
+            assert (medicaments.length - i) > 0;
+        }
+        assert compteur >= 0 && compteur <= medicaments.length;
+
+        return compteur;
+    }
+
 }

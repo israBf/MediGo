@@ -72,9 +72,12 @@ public class Pharmacie {
     public void afficherMedicamentsEnStock() {
         for (int i = 0; i < stock.size(); i++) {
             Medicament m = stock.get(i);
+            assert i >= 0 && i <= stock.size();
+
             if (m.isEnStock()) {
                 System.out.println(m.getNom());
             }
+            assert (stock.size() - i) >= 0;
         }
     }
 }
